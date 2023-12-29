@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<h1>
+    {{ object.title }}
+</h1>
+<small>
+    By: {{ object.author }}
+    <br />
+    {{ object.msg_date }}
+    <br />
+</small>
+{% if user.id == object.author.id %}
+<a href="{% url 'edit-msg' object.pk %}">Edit</a>
+<a href="{% url 'del-msg' object.pk %}">Del</a>
+{% endif %}
+
+<hr>
+{{ object.body }}
+
+<br />
+
+<a href="{%url 'feed' %}" class="btn btn-info">Back</a>
+
+<form action="{% url 'like-msg' object.pk %}" method="POST">
+    {%csrf_token%}
+    {% if liked %}
+
+    <button type="Submit" , name="msg_id" , value="{{ object.id }}" , class="btn btn-danger">Unlike</button>
+
+    {% else %}
+
+    <button type="Submit" , name="msg_id" , value="{{ object.id }}" , class="btn btn-primary">Like</button>
+
+    {% endif %}
+</form> - {{ total_likes }} likes
+
+<br />
+<h4>Comments</h4>
+
+{% if not object.comments.all %}
+    
+No Comments Yet ...
+<a href="#">Add One</a>
+{% else %}
+{% for comment in object.comments.all %}
+<strong>
+    {{ comment.name }} - 
+    {{ comment.date_added }}
+    </strong>
+<br />
+{{ comment.body }}
+{% endfor %}
+
+{% endif %}
+
+{% endif %}
+{% endblock %}

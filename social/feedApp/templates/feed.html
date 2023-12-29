@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> Feed </h1>
+<ul>
+    {% for msg in object_list %}
+    <li>
+        <a href="{% url 'message-detail' msg.pk %}">
+            {{ msg.title }}
+        </a> - {{ msg.author }} - {{ msg.msg_date }}
+
+        {% if user.is_authenticated %}
+            {% if user.id == msg.author.id %}
+                <a href="{% url 'edit-msg' msg.pk %}">Edit</a>
+                <a href="{% url 'del-msg' msg.pk %}">Del</a>
+             {% endif %}
+        {% endif %}
+        <br />
+        {{ msg.body }}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

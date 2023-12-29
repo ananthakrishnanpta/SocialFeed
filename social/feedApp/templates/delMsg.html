@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Delete Message</h1>
+{% if user.is_authenticated %}
+
+<h3>Delete: {{ msg.title }} </h3>
+
+<div class="form-group">
+    <form method="POST">
+        {%csrf_token %}
+        {{ form.as_p }}
+        <strong>Your message is about to be deleted !!! </strong>
+        <button class="btn btn-danger">Confirm</button>
+    </form>
+</div>
+
+{% endif %}
+{% endblock %}
