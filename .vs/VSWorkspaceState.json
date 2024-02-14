@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\social",
+    "\\social\\feedApp",
+    "\\social\\feedApp\\templates",
+    "\\social\\users",
+    "\\social\\users\\templates",
+    "\\social\\users\\templates\\registration"
+  ],
+  "SelectedNode": "\\social\\feedApp\\models.py",
+  "PreviewInSolutionExplorer": false
+}
