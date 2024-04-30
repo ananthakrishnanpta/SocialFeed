@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% block title %}
+{{ object.body }}
+{% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
 <h1>

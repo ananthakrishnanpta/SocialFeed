@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
+{% block title %}
+{% if user.is_authenticated %}
+{{ user.first_name }}
+{% else %}
+Feed App  
+{% endif %}
+{% endblock %}
 {% block content %}
 
 <h1> Feed </h1>
